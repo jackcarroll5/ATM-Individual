@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ATMCustomerCreationApp"
         mc:Ignorable="d"
-        Title="ATM Customer App" Height="739.575" Width="1400" Background="#FF0EF4FF">
+        Title="ATM Customer App" Height="792.575" Width="1400" Background="#FF0EF4FF">
     <Grid HorizontalAlignment="Left" Width="1085">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="lblCustInput" Content="Please input customer details for insertion into ATM database" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="336"/>
-        <Button x:Name="btnQuit" Content="Exit" Grid.Column="1" Margin="1046,-5,-307,0" VerticalAlignment="Top" Click="btnQuit_Click" Height="32"/>
+        <Button x:Name="btnQuit" Content="Exit" Grid.Column="1" Margin="1046,1,-307,0" VerticalAlignment="Top" Click="btnQuit_Click" Height="26"/>
         <Label x:Name="lblCustID" Content="CustomerID" HorizontalAlignment="Left" Margin="26,41,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblFirstName" Content="First Name" HorizontalAlignment="Left" Margin="26,87,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblLastName" Content="Surname" HorizontalAlignment="Left" Margin="26,133,0,0" VerticalAlignment="Top"/>
@@ -36,21 +36,41 @@
         <RadioButton x:Name="radCustomers" Content="All Customers" Grid.Column="1" HorizontalAlignment="Left" Margin="109,169,0,0" VerticalAlignment="Top" Checked="RadCustomers_Checked" IsChecked="True"/>
         <RadioButton x:Name="radView" Content="View " Grid.Column="1" HorizontalAlignment="Left" Margin="538,169,0,0" VerticalAlignment="Top" Checked="RadView_Checked" RenderTransformOrigin="0.521,-1.2"/>
         <Label x:Name="lblCustIDUpd" Content="CustomerID" HorizontalAlignment="Left" Margin="112,314,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label x:Name="lblFirstNameUpd" Content="First Name" HorizontalAlignment="Left" Margin="112,360,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label x:Name="lblLastNameUpd" Content="Surname" HorizontalAlignment="Left" Margin="112,406,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label x:Name="lblGenderUpd" Content="Gender" HorizontalAlignment="Left" Margin="112,454,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label x:Name="lblAddressupd" Content="Address" HorizontalAlignment="Left" Margin="112,506,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label x:Name="lblPhoneNoUpd" Content="Phone No" HorizontalAlignment="Left" Margin="106,574,0,0" VerticalAlignment="Top" Height="43" Grid.Column="1"/>
-        <TextBox x:Name="txtFirstNameUdp" HorizontalAlignment="Left" Height="23" Margin="211,363,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtFirstName_TextChanged" Grid.Column="1"/>
-        <TextBox x:Name="txtSurnameUdp" HorizontalAlignment="Left" Height="23" Margin="211,410,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtSurname_TextChanged" Grid.Column="1"/>
-        <TextBox x:Name="txtAddUpd" HorizontalAlignment="Left" Height="70" Margin="196,492,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Grid.Column="1"/>
-        <Label x:Name="lblDOBUpd" Content="Date of Birth" HorizontalAlignment="Left" Margin="106,622,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <TextBox x:Name="txtPhoneNoUpd" HorizontalAlignment="Left" Height="23" Margin="196,578,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1" Grid.Column="1"/>
-        <DatePicker x:Name="dateDOBUpd" HorizontalAlignment="Left" Margin="196,623,0,0" VerticalAlignment="Top" Width="177" Grid.Column="1"/>
-        <Button x:Name="btnUpd" Content="Register" HorizontalAlignment="Left" Margin="221,662,0,0" VerticalAlignment="Top" Width="122" Click="btnRegister_Click" Grid.Column="1"/>
-        <TextBox x:Name="txtGender" HorizontalAlignment="Left" Height="23" Margin="196,457,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="43" TextChanged="txtSurname_TextChanged" Grid.Column="1"/>
-        <ComboBox x:Name="cboCusotmers" Grid.Column="1" HorizontalAlignment="Left" Margin="211,314,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblFirstNameUpd" Content="First Name" HorizontalAlignment="Left" Margin="112,425,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lblLastNameUpd" Content="Surname" HorizontalAlignment="Left" Margin="112,471,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lblGenderUpd" Content="Gender" HorizontalAlignment="Left" Margin="112,519,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lblAddressupd" Content="Address" HorizontalAlignment="Left" Margin="112,571,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lblPhoneNoUpd" Content="Phone No" HorizontalAlignment="Left" Margin="106,639,0,0" VerticalAlignment="Top" Height="43" Grid.Column="1"/>
+        <TextBox x:Name="txtFirstNameUdp" HorizontalAlignment="Left" Height="23" Margin="211,428,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtFirstName_TextChanged" Grid.Column="1"/>
+        <TextBox x:Name="txtSurnameUdp" HorizontalAlignment="Left" Height="23" Margin="211,475,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtSurname_TextChanged" Grid.Column="1"/>
+        <TextBox x:Name="txtAddUpd" HorizontalAlignment="Left" Height="70" Margin="196,557,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Grid.Column="1"/>
+        <Label x:Name="lblDOBUpd" Content="Date of Birth" HorizontalAlignment="Left" Margin="106,687,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="txtPhoneNoUpd" HorizontalAlignment="Left" Height="23" Margin="196,643,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1" Grid.Column="1"/>
+        <TextBox x:Name="txtGender" HorizontalAlignment="Left" Height="23" Margin="196,522,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="43" TextChanged="txtSurname_TextChanged" Grid.Column="1"/>
+        <ComboBox x:Name="cboCustomers" Grid.Column="1" HorizontalAlignment="Left" Margin="211,314,0,0" VerticalAlignment="Top" Width="151" SelectionChanged="cboCustomers_SelectionChanged"/>
         <Label x:Name="lblUpd" Content="Update Customer Details" Grid.Column="1" HorizontalAlignment="Left" Margin="144,271,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCustIDDisp" Content="Cust ID" HorizontalAlignment="Left" Margin="112,370,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="txtCustIDUpd" HorizontalAlignment="Left" Height="23" Margin="211,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtFirstName_TextChanged" Grid.Column="1"/>
+        <Button x:Name="btnUpdate" Content="Update" Grid.Column="1" HorizontalAlignment="Left" Margin="211,719,0,0" VerticalAlignment="Top" Width="120" Click="btnUpdate_Click" Height="33"/>
+        <TextBox x:Name="txtDOB" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="196,691,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtDOB_TextChanged"/>
+        <Label x:Name="lblCustIDDel" Content="CustomerID" HorizontalAlignment="Left" Margin="610,300,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lblFirstNameDel" Content="First Name" HorizontalAlignment="Left" Margin="610,411,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lblLastNameDel" Content="Surname" HorizontalAlignment="Left" Margin="610,457,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lblGenderDel" Content="Gender" HorizontalAlignment="Left" Margin="610,505,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lblAddressDel" Content="Address" HorizontalAlignment="Left" Margin="610,557,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lblPhoneNoDel" Content="Phone No" HorizontalAlignment="Left" Margin="604,625,0,0" VerticalAlignment="Top" Height="43" Grid.Column="1"/>
+        <TextBox x:Name="txtFirstNameDel" HorizontalAlignment="Left" Height="23" Margin="709,414,-15,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtFirstName_TextChanged" Grid.Column="1"/>
+        <TextBox x:Name="txtSurnameDel" HorizontalAlignment="Left" Height="23" Margin="709,461,-15,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtSurname_TextChanged" Grid.Column="1"/>
+        <TextBox x:Name="txtAddDel" HorizontalAlignment="Left" Height="70" Margin="694,543,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Grid.Column="1"/>
+        <Label x:Name="lblDOBDel" Content="Date of Birth" HorizontalAlignment="Left" Margin="604,673,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="txtPhoneNoDel" HorizontalAlignment="Left" Height="23" Margin="694,629,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_1" Grid.Column="1"/>
+        <TextBox x:Name="txtGenderDel" HorizontalAlignment="Left" Height="23" Margin="694,508,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="43" TextChanged="txtSurname_TextChanged" Grid.Column="1"/>
+        <Label x:Name="lblDel" Content="Delete Customer " Grid.Column="1" HorizontalAlignment="Left" Margin="694,253,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCustIDDispDel" Content="Cust ID" HorizontalAlignment="Left" Margin="610,356,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="txtCustIDDel" HorizontalAlignment="Left" Height="23" Margin="709,359,-15,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtFirstName_TextChanged" Grid.Column="1"/>
+        <TextBox x:Name="txtDOBDel" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="694,677,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="txtDOB_TextChanged"/>
+        <Button x:Name="btnRemove" Content="Remove" Grid.Column="1" HorizontalAlignment="Left" Margin="709,719,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="btnRemove_Click"/>
+        <ComboBox x:Name="cboCustomersDel" Grid.Column="1" HorizontalAlignment="Left" Margin="709,304,-15,0" VerticalAlignment="Top" Width="120" SelectionChanged="cboCustomersDel_SelectionChanged"/>
 
     </Grid>
 </Window>

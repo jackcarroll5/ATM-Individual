@@ -13,10 +13,22 @@ namespace ATMCustomerCreationApp
         private int custID;
         private string firstName;
         private string lastName;
-        private char gender;
+        private string gender;
         private string address;
-        private int phoneNo;
+        private string phoneNo;
         private DateTime dob;
+
+        public Customer()
+        {
+            custID = 000;
+            firstName = "No name";
+            lastName = "No name";
+            gender = "U";
+            address = "No address";
+            phoneNo = "0000000000";
+            dob = DateTime.MinValue;
+
+        }
 
         public void setCustID(int custID)
         {
@@ -33,7 +45,7 @@ namespace ATMCustomerCreationApp
             this.lastName = lastName;
         }
 
-        public void setGender(char gender)
+        public void setGender(string gender)
         {
             this.gender = gender;
         }
@@ -43,7 +55,7 @@ namespace ATMCustomerCreationApp
             this.address = address;
         }
 
-        public void setPhoneNo(int phoneNo)
+        public void setPhoneNo(string phoneNo)
         {
             this.phoneNo = phoneNo;
         }
@@ -68,7 +80,7 @@ namespace ATMCustomerCreationApp
             return lastName;
         }
 
-        public char getGender()
+        public string getGender()
         {
             return gender;
         }
@@ -78,7 +90,7 @@ namespace ATMCustomerCreationApp
             return address;
         }
 
-        public int getPhoneNo()
+        public string getPhoneNo()
         {
             return phoneNo;
         }
@@ -114,7 +126,7 @@ namespace ATMCustomerCreationApp
             return DS;
         }
 
-        public static DataSet getView(DataSet DS)
+        public static DataSet getCustomersDate(DataSet DS)
         {
             OracleConnection conn = new OracleConnection(DataConnection.oracConn);
 
@@ -122,7 +134,8 @@ namespace ATMCustomerCreationApp
             conn.Open();
 
 
-            String strSQL = "SELECT * FROM VW_CARD";
+            String strSQL = "SELECT CUSTOMERID,FIRSTNAME,LASTNAME,DOB FROM CUSTOMER  " +
+                "ORDER BY CUSTOMERID";
             OracleCommand cmd = new OracleCommand(strSQL, conn);
 
             //cmd.CommandType = CommandType.Text;
@@ -137,6 +150,59 @@ namespace ATMCustomerCreationApp
             conn.Close();
 
             return DS;
+        }
+
+        public static DataSet getView(DataSet DS)
+        {
+            OracleConnection conn = new OracleConnection(DataConnection.oracConn);
+
+            //connection name 
+            conn.Open();
+
+
+            String strSQL = "SELECT * FROM VW_CARD WHERE ACCOUNTBALANCE > = 5000";
+            OracleCommand cmd = new OracleCommand(strSQL, conn);
+
+            //cmd.CommandType = CommandType.Text;
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            OracleDataAdapter da = new OracleDataAdapter(cmd);
+
+            da.SelectCommand = cmd;
+
+            da.Fill(DS, "ss");
+
+            conn.Close();
+
+            return DS;
+        }
+
+        public void getCust(int CustID)
+        {
+            OracleConnection myConn = new OracleConnection(DataConnection.oracConn);
+            myConn.Open();
+
+            //Define SQL query to get MAX stock_No used
+            String strSQL = "SELECT * FROM CUSTOMER WHERE CUSTOMERID = " + CustID;
+
+            OracleCommand cmd = new OracleCommand(strSQL, myConn);
+
+            //execute the SQL query
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //If first stockNo, assign value 1, otherwise add 1 to MAX value
+            if (dr.Read())
+            {
+                setCustID(dr.GetInt32(0));
+                setFirstName(dr.GetString(1));
+                setLastName(dr.GetString(2));
+                setGender(dr.GetString(3));
+                setAddress(dr.GetString(4));
+                setPhoneNo(dr.GetString(5));
+                setDateTime(dr.GetDateTime(6));
+       
+            }
+            myConn.Close();
         }
 
         public void regCustomer()
@@ -173,11 +239,10 @@ namespace ATMCustomerCreationApp
             OracleConnection myConn = new OracleConnection(DataConnection.oracConn);
             myConn.Open();
 
-            //Define SQL query to INSERT stock record
-            String strSQL = "INSERT INTO CUSTOMER VALUES(" + this.custID.ToString() +
-                ",'" + this.firstName + "','" + this.lastName + "','" +
-                this.gender + "','" + this.address + "'," + this.phoneNo + ",'" + String.Format("{0:dd-MMM-yy}", this.dob)
-                + "')";
+           
+            String strSQL = "UPDATE CUSTOMER SET FIRSTNAME = '" + this.firstName + "', LASTNAME = '" + this.lastName +
+                "', GENDER = '" + this.gender + "', ADDRESS = '" + this.address + "', PHONENUMBER = '" + this.phoneNo  +
+                "', DOB = '" + String.Format("{0:dd-MMM-yy}", this.dob) + "' WHERE CUSTOMERID = " + this.custID;
 
             //Execute the command
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
@@ -188,11 +253,23 @@ namespace ATMCustomerCreationApp
 
         }
 
+        public static void removeCust(int custID)
+        {
+            OracleConnection myConn = new OracleConnection(DataConnection.oracConn);
+            myConn.Open();
+
+            String strSQL = "DELETE FROM CUSTOMER WHERE CUSTOMERID = " + custID;
+
+            OracleCommand cmd = new OracleCommand(strSQL, myConn);
+            cmd.ExecuteNonQuery();
+
+
+            myConn.Close();
+        }
+
         public static int nextCust()
         {
-
             int nextCustomer;
-
      
             OracleConnection myConn = new OracleConnection(DataConnection.oracConn);
             myConn.Open();
@@ -214,20 +291,11 @@ namespace ATMCustomerCreationApp
                 nextCustomer = Convert.ToInt16(dr.GetValue(0)) + 1;
 
 
-
-
-
             myConn.Close();
 
 
             //return next StockNo
             return nextCustomer;
-
-
-
-
-
-
 
         }
 
